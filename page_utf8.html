@@ -1,0 +1,1203 @@
+﻿<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Amici | Luxury Residential Remodeling</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="shortcut icon" type="image/png" href="logo.png" />
+
+    <!-- Tailwind CSS (CDN for easy manual editing) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Tailwind Config for Design System -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0c1b2a",
+                        "primary-container": "#112240",
+                        "on-primary-container": "#8fa3bf",
+                        secondary: "#9a7b4f",
+                        "secondary-fixed": "#d4b896",
+                        surface: "#f8f9fb",
+                        "surface-container": "#f0f2f5",
+                        "surface-container-low": "#f5f6f8",
+                        "surface-variant": "#e2e5ea",
+                        "on-surface": "#101820",
+                        "on-surface-variant": "#445566",
+                        "outline-variant": "#c5cdd6",
+                    },
+                    spacing: {
+                        "section-gap": "140px",
+                        "gutter": "24px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "display-lg": ["Playfair Display", "serif"],
+                        "headline-lg": ["Playfair Display", "serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        "headline-sm": ["Playfair Display", "serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-surface text-on-surface">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-transparent border-b border-transparent transition-all duration-500"
+        id="main-nav">
+        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto transition-all duration-500"
+            id="nav-container">
+            <!-- Header Logo Removed -->
+            <nav class="hidden md:flex gap-8 items-center">
+                <a class="font-label-caps text-[11px] tracking-[0.2em] text-white/90 hover:text-secondary-fixed transition-colors duration-300 uppercase drop-shadow-sm"
+                    href="#transformations">Portfolio</a>
+                <a class="font-label-caps text-[11px] tracking-[0.2em] text-white/90 hover:text-secondary-fixed transition-colors duration-300 uppercase drop-shadow-sm"
+                    href="#services">Services</a>
+                <a class="font-label-caps text-[11px] tracking-[0.2em] text-white/90 hover:text-secondary-fixed transition-colors duration-300 uppercase drop-shadow-sm"
+                    href="#process">Process</a>
+                <a class="font-label-caps text-[11px] tracking-[0.2em] text-white/90 hover:text-secondary-fixed transition-colors duration-300 uppercase drop-shadow-sm"
+                    href="#about">About</a>
+            </nav>
+            <div class="magnetic-btn hidden md:block">
+                <a href="#quote-section"
+                    class="bg-secondary-fixed text-primary px-7 py-2.5 font-label-caps text-[11px] tracking-[0.15em] uppercase font-bold hover:bg-white transition-all duration-300 active:scale-95 shadow-lg rounded-sm">
+                    Request a Quote
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section
+            class="relative min-h-[100svh] md:min-h-screen flex items-start md:items-center justify-center overflow-hidden bg-primary-container text-white"
+            id="home">
+            <!-- Background Carousel -->
+            <div class="absolute inset-0 z-0">
+                <div class="hero-slide active">
+                    <img src="assets/images/hero/hero-1.jpg" alt="Projeto de reforma"
+                        onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000'" />
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/images/hero/hero-2.jpg" alt="Detalhe de construÃ§Ã£o"
+                        onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=2000'" />
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/images/hero/hero-3.jpg" alt="Reforma andamento"
+                        onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000'" />
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/images/hero/hero-4.jpg" alt="Ambiente renovado"
+                        onerror="this.src='https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=2000'" />
+                </div>
+                <!-- Ambient glow -->
+                <div class="absolute top-1/3 left-1/3 w-[30vw] h-[30vw] bg-secondary/24 rounded-full blur-[100px] pointer-events-none z-10"
+                    style="animation: pulse 10s infinite alternate;"></div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/30 to-primary-container z-10 opacity-90">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-primary/45 via-transparent to-primary/40 z-10"></div>
+                <div class="absolute inset-0 premium-grain opacity-[0.2] z-10 pointer-events-none"></div>
+            </div>
+
+            <!-- Content -->
+            <div
+                class="relative z-20 text-center px-margin-mobile max-w-5xl mx-auto flex flex-col items-center justify-start md:justify-center md:h-full pt-0 -mt-12 md:mt-0 pb-4 md:pt-16 md:pb-16">
+                <div class="flex justify-center mb-3 md:mb-10 reveal logo-container">
+                    <img src="assets/images/logo2.png" alt="Amici Logo"
+                        class="logo-img object-contain drop-shadow-2xl w-48 sm:w-56 md:w-80 lg:w-96 h-auto"
+                        onerror="this.style.display='none'" />
+                </div>
+
+                <div class="reveal mb-2 md:mb-6" style="transition-delay: 200ms;">
+                    <span
+                        class="inline-block border border-white/20 bg-black/20 backdrop-blur-md px-5 py-2 rounded-full font-label-caps text-[10px] md:text-[11px] text-white tracking-[0.25em] uppercase shadow-lg">
+                        <span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed inline-block mr-2 align-middle"></span>
+                        Your Vision, Our Specialty
+                    </span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-display-lg leading-[1.15] tracking-tight drop-shadow-2xl text-white mb-2 md:mb-6 reveal"
+                    style="transition-delay: 400ms;">
+                    Residential Remodeling<br />
+                    <span class="text-[#d4b896]">Tailored To Your Vision</span>
+                </h1>
+
+                <p class="font-body-lg text-sm md:text-lg text-white/90 max-w-2xl mb-4 md:mb-10 drop-shadow-md mx-auto reveal"
+                    style="transition-delay: 600ms;">
+                    We transform outdated spaces into modern, elegant, and functional environments with top-tier quality and meticulous attention to detail.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-2.5 justify-center items-center w-full reveal"
+                    style="transition-delay: 800ms;">
+                    <div class="magnetic-btn w-full sm:w-auto">
+                        <a href="#quote-section"
+                            class="inline-flex items-center justify-center gap-2 bg-[#d4b896] text-primary px-8 py-3.5 md:py-4 font-label-caps text-[11px] tracking-[0.15em] uppercase font-bold hover:bg-white transition-all duration-300 w-full rounded-sm shadow-xl active:scale-95">
+                            Request a Quote
+                        </a>
+                    </div>
+                    <div class="magnetic-btn w-full sm:w-auto">
+                        <a href="#transformations"
+                            class="inline-flex items-center justify-center gap-2 border border-[#d4b896] text-[#d4b896] px-8 py-3.5 md:py-4 font-label-caps text-[11px] tracking-[0.15em] uppercase font-bold hover:bg-[#d4b896]/10 transition-all duration-300 w-full rounded-sm backdrop-blur-sm">
+                            View Our Work
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Strip -->
+        <section class="bg-primary-container py-8 overflow-hidden border-y border-white/5"
+            aria-label="Galeria de projetos">
+            <div class="flex gap-5 animate-marquee hover:[animation-play-state:paused] w-max px-4">
+                <!-- Double the items for seamless marquee loop -->
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/gallery/gallery-1.jpg" alt="Reforma"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Interior Remodeling</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/services/kitchen.jpg" alt="Cozinha"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Kitchen Remodeling</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/gallery/gallery-2.jpg" alt="Acabamento"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Finishes</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/services/bathroom.jpg" alt="Banheiro"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Bathroom Remodeling</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/gallery/gallery-3.jpg" alt="RenovaÃ§Ã£o"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Renovation</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/gallery/gallery-4.jpg" alt="Projeto"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Completed Project</span>
+                    </figcaption>
+                </figure>
+
+                <!-- Duplicate for loop -->
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/gallery/gallery-1.jpg" alt="Reforma"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Interior Remodeling</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/services/kitchen.jpg" alt="Cozinha"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Kitchen Remodeling</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/gallery/gallery-2.jpg" alt="Acabamento"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Finishes</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/services/bathroom.jpg" alt="Banheiro"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Bathroom Remodeling</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/gallery/gallery-3.jpg" alt="RenovaÃ§Ã£o"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Renovation</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative shrink-0 w-72 md:w-96 aspect-[4/3] overflow-hidden group">
+                    <img src="assets/images/gallery/gallery-4.jpg" alt="Projeto"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2.5s] ease-out" />
+                    <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/90 to-transparent">
+                        <span
+                            class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed uppercase">Completed Project</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Golden Separator Section -->
+        <section id="trust" class="relative bg-primary w-full h-px">
+            <div class="max-w-container-max mx-auto">
+                <!-- Golden Separator -->
+                <div class="w-full h-px relative">
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[60%] h-[1px] bg-gradient-to-r from-transparent via-secondary-fixed to-transparent opacity-70">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about"
+            class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+                <div class="reveal">
+                    <span
+                        class="font-label-caps text-xs tracking-[0.2em] text-secondary mb-4 block uppercase font-semibold">Our Essence</span>
+                    <h2 class="font-headline-lg text-4xl md:text-5xl mb-8">Excellence in Every Detail</h2>
+                    <p class="font-body-lg text-on-surface-variant mb-6 text-lg leading-relaxed">
+                        At Amici Remodeling, we transform old spaces into modern and functional environments. Under the
+                        leadership of Tharsis Thiago Alchaar, our team dedicates meticulous attention to every detail,
+                        ensuring top-tier quality and clear communication with our clients at each stage of the project.
+                    </p>
+                    <p class="font-body-lg text-on-surface-variant mb-8 text-lg leading-relaxed">
+                        Specialized in bathroom remodeling (including accessibility), modern kitchens, and general
+                        construction, we bring professionalism, safety, and excellence in every execution. Your home is
+                        our commitment.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-6 mt-2">
+                        <div class="magnetic-btn">
+                            <a href="#quote-section"
+                                class="inline-flex items-center justify-center gap-2 bg-[#d4b896] text-primary px-7 py-3 font-label-caps text-[10px] tracking-[0.2em] uppercase font-bold hover:bg-primary hover:text-[#d4b896] border border-transparent hover:border-[#d4b896] transition-all duration-300 rounded-sm shadow-lg">
+                                Speak with a Specialist
+                            </a>
+                        </div>
+                        <div class="magnetic-btn">
+                            <a class="group inline-flex items-center gap-2 font-label-caps text-[10px] tracking-widest text-primary border-b border-secondary-fixed pb-1 hover:text-secondary-fixed transition-all uppercase"
+                                href="#process">
+                                Our Process
+                                <span
+                                    class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">east</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative reveal" style="transition-delay: 300ms;">
+                    <div class="aspect-[4/5] bg-surface-container overflow-hidden rounded-sm shadow-xl relative">
+                        <img class="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                            src="assets/images/gallery/gallery-2.jpg" alt="Detalhe de acabamento"
+                            onerror="this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800'" />
+                        <div class="absolute inset-0 bg-primary/10 hover:bg-transparent transition-colors duration-500">
+                        </div>
+                    </div>
+                    <!-- Decorative border box -->
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 border border-secondary-fixed -z-10"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="bg-surface-container-low py-section-gap overflow-hidden">
+            <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="text-center mb-20 reveal">
+                    <span
+                        class="font-label-caps text-xs tracking-[0.2em] text-secondary mb-4 block uppercase font-semibold">AMICI SERVICES</span>
+                    <h2 class="font-headline-lg text-4xl md:text-5xl">Complete Renovation Solutions</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div
+                        class="bg-white p-10 border border-outline-variant/30 hover:border-secondary hover:shadow-2xl transition-all duration-500 group reveal">
+                        <div
+                            class="w-16 h-16 bg-surface mb-8 flex items-center justify-center group-hover:bg-primary transition-all duration-500 rounded-sm">
+                            <span
+                                class="material-symbols-outlined text-secondary text-3xl group-hover:text-white transition-colors duration-500">countertops</span>
+                        </div>
+                        <h3 class="font-headline-md text-2xl mb-4 group-hover:text-primary transition-colors">Kitchen Remodeling</h3>
+                        <div
+                            class="mb-6 aspect-video overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <img src="assets/images/services/kitchen.jpg" alt="Kitchen Remodeling"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=800'" />
+                        </div>
+                        <p class="font-body-md text-on-surface-variant mb-8 leading-relaxed">
+                            Kitchen modernization with new quartz countertops, premium finishes, and functional layouts that bring comfort to daily life.
+                        </p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="bg-white p-10 border border-outline-variant/30 hover:border-secondary hover:shadow-2xl transition-all duration-500 group reveal"
+                        style="transition-delay: 150ms;">
+                        <div
+                            class="w-16 h-16 bg-surface mb-8 flex items-center justify-center group-hover:bg-primary transition-all duration-500 rounded-sm">
+                            <span
+                                class="material-symbols-outlined text-secondary text-3xl group-hover:text-white transition-colors duration-500">bathtub</span>
+                        </div>
+                        <h3 class="font-headline-md text-2xl mb-4 group-hover:text-primary transition-colors">Bathroom & Accessibility</h3>
+                        <div
+                            class="mb-6 aspect-video overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <img src="assets/images/services/bathroom.jpg" alt="Bathroom Remodeling"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                onerror="this.src='https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800'" />
+                        </div>
+                        <p class="font-body-md text-on-surface-variant mb-8 leading-relaxed">
+                            Modern and safe bathrooms, including tub-to-shower conversions with benches â ideal for mobility and safety.
+                        </p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="bg-white p-10 border border-outline-variant/30 hover:border-secondary hover:shadow-2xl transition-all duration-500 group reveal"
+                        style="transition-delay: 300ms;">
+                        <div
+                            class="w-16 h-16 bg-surface mb-8 flex items-center justify-center group-hover:bg-primary transition-all duration-500 rounded-sm">
+                            <span
+                                class="material-symbols-outlined text-secondary text-3xl group-hover:text-white transition-colors duration-500">foundation</span>
+                        </div>
+                        <h3 class="font-headline-md text-2xl mb-4 group-hover:text-primary transition-colors">General Construction & Remodels</h3>
+                        <div
+                            class="mb-6 aspect-video overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <img src="assets/images/services/general.png" alt="General Construction"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800'" />
+                        </div>
+                        <p class="font-body-md text-on-surface-variant mb-8 leading-relaxed">
+                            Complete remodels with meticulous attention to detail, flawless professionalism, and top-quality execution in every project.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center reveal">
+                    <a href="#quote-section"
+                        class="inline-flex items-center justify-center gap-2 border border-outline-variant text-primary px-8 py-3.5 font-label-caps text-[11px] tracking-[0.15em] uppercase font-bold hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 rounded-full shadow-sm">
+                        Request a Detailed Quote
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before & After Transformation Slider -->
+        <section id="transformations" class="py-section-gap overflow-hidden bg-[#050a11] text-white relative">
+            <div class="absolute inset-0 premium-grain opacity-20 pointer-events-none" aria-hidden="true"></div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--color-primary-container)_0%,_transparent_70%)] opacity-40 pointer-events-none">
+            </div>
+
+            <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative">
+                <!-- Header -->
+                <div class="text-center mb-16 max-w-3xl mx-auto relative z-20 reveal">
+                    <span
+                        class="font-label-caps text-xs tracking-[0.3em] text-secondary-fixed mb-4 block font-semibold uppercase">Projects
+                        and Remodels</span>
+                    <h2 class="font-headline-lg text-4xl md:text-5xl">Real Transformations. Real Results.</h2>
+                    <p class="font-body-md text-on-surface-variant mt-6">
+                        From old and outdated to modern and refined â explore the quality and care behind every Amici Remodeling project.
+                    </p>
+                </div>
+
+                <!-- Project Tabs -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10 reveal" style="transition-delay: 100ms;">
+                    <button
+                        class="project-tab active font-label-caps text-[11px] tracking-[0.2em] px-6 py-3 border transition-all duration-500 uppercase rounded-sm bg-secondary-fixed text-primary border-secondary-fixed shadow-lg shadow-secondary-fixed/20"
+                        data-index="0">Complete Remodel</button>
+                    <button
+                        class="project-tab font-label-caps text-[11px] tracking-[0.2em] px-6 py-3 border transition-all duration-500 uppercase rounded-sm border-white/15 text-white/60 hover:text-white hover:border-white/30 bg-white/5"
+                        data-index="1">Interior Renovation</button>
+                    <button
+                        class="project-tab font-label-caps text-[11px] tracking-[0.2em] px-6 py-3 border transition-all duration-500 uppercase rounded-sm border-white/15 text-white/60 hover:text-white hover:border-white/30 bg-white/5"
+                        data-index="2">Kitchen Update</button>
+                </div>
+
+                <!-- Slider & Details Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-8 items-start">
+
+                    <!-- Interactive Slider -->
+                    <div id="slider-container" class="transition-all duration-500 opacity-100 scale-100 reveal"
+                        style="transition-delay: 200ms;">
+                        <div class="relative group cursor-ew-resize overflow-hidden comparison-slider aspect-[4/3] md:aspect-[16/9] w-full rounded-sm shadow-xl ring-1 ring-white/10"
+                            id="comparison-slider">
+
+                            <img class="absolute inset-0 w-full h-full object-cover" id="after-img"
+                                src="assets/images/before-after/after-2.jpg" alt="After" />
+
+                            <div class="absolute inset-0 overflow-hidden z-10 shadow-[inset_20px_0_40px_-20px_rgba(0,0,0,0.3)]"
+                                id="before-wrapper" style="clip-path: inset(0 50% 0 0)">
+                                <img class="absolute inset-0 w-full h-full object-cover grayscale-[0.3] max-w-none"
+                                    id="before-img" src="assets/images/before-after/before-1.jpg" alt="Before" />
+                            </div>
+
+                            <div
+                                class="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(0,0,0,0.7)_100%)]">
+                            </div>
+
+                            <div class="absolute inset-y-0 w-[1px] bg-secondary-fixed z-20 pointer-events-none slider-divider-glow shadow-[0_0_15px_var(--color-secondary-fixed)]"
+                                id="slider-divider" style="left: 50%; transform: translateX(-50%)"></div>
+
+                            <div class="absolute z-30 w-1 h-16 md:h-24 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-[0_0_25px_var(--color-secondary-fixed)] pointer-events-none slider-handle"
+                                id="slider-handle" style="left: 50%; top: 50%; transform: translate(-50%, -50%)">
+                                <div
+                                    class="absolute flex gap-4 md:gap-8 px-3 py-1.5 rounded-full bg-[#050a11]/60 backdrop-blur-md border border-white/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+                                    <span
+                                        class="material-symbols-outlined text-secondary-fixed text-sm md:text-lg drop-shadow-md">chevron_left</span>
+                                    <span
+                                        class="material-symbols-outlined text-secondary-fixed text-sm md:text-lg drop-shadow-md">chevron_right</span>
+                                </div>
+                            </div>
+
+                            <div
+                                class="absolute bottom-3 md:bottom-6 left-3 md:left-6 z-30 flex items-center gap-2 md:gap-4 opacity-70 md:opacity-50 transition-opacity duration-700 md:group-hover:opacity-20 pointer-events-none">
+                                <span class="hidden md:block w-10 h-[1px] bg-white/50"></span>
+                                <span
+                                    class="font-display-lg text-sm md:text-lg tracking-[0.2em] md:tracking-[0.4em] text-white/90 uppercase drop-shadow-md">Before</span>
+                            </div>
+                            <div
+                                class="absolute bottom-3 md:bottom-6 right-3 md:right-6 z-30 flex items-center gap-2 md:gap-4 pointer-events-none">
+                                <span
+                                    class="font-display-lg text-sm md:text-xl tracking-[0.2em] md:tracking-[0.4em] text-secondary-fixed uppercase drop-shadow-[0_0_10px_rgba(212,184,150,0.5)]">After</span>
+                                <span class="hidden md:block w-16 h-[1px] bg-secondary-fixed/80"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Details Panel -->
+                    <div class="lg:pt-4 reveal" style="transition-delay: 400ms;">
+                        <div id="project-details"
+                            class="border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 space-y-5 rounded-sm transition-all duration-500 opacity-100 translate-y-0">
+                            <div>
+                                <p
+                                    class="font-label-caps text-[10px] tracking-[0.3em] text-secondary-fixed mb-2 uppercase">
+                                    FEATURED TRANSFORMATION</p>
+                                <h3 id="project-title" class="font-headline-md text-xl md:text-2xl text-white">Complete Remodel</h3>
+                            </div>
+
+                            <p id="project-desc" class="font-body-md text-sm text-white/60 leading-relaxed">
+                                Space that was outdated and needed a complete refresh. We replaced finishes, reorganized the layout, and cared for every detail up to delivery.
+                            </p>
+
+                            <dl class="space-y-3 pt-2">
+                                <div class="flex justify-between gap-4 border-b border-white/8 pb-3">
+                                    <dt class="font-label-caps text-[10px] tracking-widest text-white/40 uppercase">Type
+                                    </dt>
+                                    <dd id="project-loc" class="font-body-md text-sm text-white text-right">Shrewsbury,
+                                        MA</dd>
+                                </div>
+                                <div class="flex justify-between gap-4 border-b border-white/8 pb-3">
+                                    <dt class="font-label-caps text-[10px] tracking-widest text-white/40 uppercase">
+                                        Scope</dt>
+                                    <dd id="project-scope" class="font-body-md text-sm text-white text-right">General Remodel Â· New Layout</dd>
+                                </div>
+                                <div class="flex justify-between gap-4 border-b border-white/8 pb-3">
+                                    <dt class="font-label-caps text-[10px] tracking-widest text-white/40 uppercase">
+                                        Timeline</dt>
+                                    <dd id="project-dur" class="font-body-md text-sm text-white text-right">Amici
+                                        Remodeling</dd>
+                                </div>
+                            </dl>
+
+                            <div class="pt-3 flex items-center gap-3 border-b border-white/8 pb-5 mb-2">
+                                <div class="flex items-center gap-1.5">
+                                    <span
+                                        class="material-symbols-outlined text-secondary-fixed text-base">verified</span>
+                                    <span
+                                        class="font-label-caps text-[9px] tracking-widest text-white/50 uppercase">Real Project</span>
+                                </div>
+                                <span class="text-white/15">Â·</span>
+                                <div class="flex items-center gap-1.5">
+                                    <span
+                                        class="material-symbols-outlined text-secondary-fixed text-base">photo_camera</span>
+                                    <span
+                                        class="font-label-caps text-[9px] tracking-widest text-white/50 uppercase">Real Photos</span>
+                                </div>
+                            </div>
+                            <div class="pt-1">
+                                <a href="#quote-section"
+                                    class="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-6 py-3 font-label-caps text-[10px] tracking-[0.15em] uppercase hover:bg-white hover:text-primary transition-all duration-300 rounded-sm w-full group">
+                                    I Want a Transformation Like This
+                                    <span
+                                        class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">east</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credibility Band -->
+                <div class="mt-16 reveal" style="transition-delay: 600ms;">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-white/8 pt-10">
+                        <div class="text-center">
+                            <p class="font-display-lg text-2xl md:text-3xl text-secondary-fixed tracking-tight mb-1">
+                                150+</p>
+                            <p class="font-label-caps text-[9px] tracking-[0.2em] text-white/40 uppercase">Projects Delivered</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-display-lg text-2xl md:text-3xl text-secondary-fixed tracking-tight mb-1">98%
+                            </p>
+                            <p class="font-label-caps text-[9px] tracking-[0.2em] text-white/40 uppercase">Customer Satisfaction</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-display-lg text-2xl md:text-3xl text-secondary-fixed tracking-tight mb-1">12+
+                            </p>
+                            <p class="font-label-caps text-[9px] tracking-[0.2em] text-white/40 uppercase">Years Experience</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-display-lg text-2xl md:text-3xl text-secondary-fixed tracking-tight mb-1">
+                                100%</p>
+                            <p class="font-label-caps text-[9px] tracking-[0.2em] text-white/40 uppercase">Licensed and
+                                Insured</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Gallery -->
+        <section id="portfolio"
+            class="py-section-gap overflow-hidden bg-surface-bright px-margin-mobile md:px-margin-desktop">
+            <div class="max-w-container-max mx-auto">
+                <div class="reveal flex flex-col md:flex-row justify-between items-start md:items-end mb-14">
+                    <div class="mb-8 md:mb-0 max-w-xl">
+                        <span
+                            class="font-label-caps text-xs tracking-[0.2em] text-secondary mb-4 block uppercase font-semibold">Real Project Gallery</span>
+                        <h2 class="font-headline-lg text-4xl md:text-5xl text-primary">Our Work Speaks for Itself</h2>
+                        <p class="font-body-md text-on-surface-variant mt-5">
+                            Every image is of a real project â real homes, real transformations, documented
+                            from start to finish. No stock photos, no renders.
+                        </p>
+                    </div>
+                    <a href="#"
+                        class="group inline-flex items-center gap-2 font-label-caps text-xs tracking-[0.2em] text-primary pb-1 border-b border-transparent hover:border-primary transition-all shrink-0 uppercase">
+                        VIEW ALL PROJECTS
+                        <span
+                            class="material-symbols-outlined text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span>
+                    </a>
+                </div>
+
+                <div class="reveal mb-14 max-w-md gold-line h-[1px]"></div>
+
+                <!-- Elegant Bento Box Gallery -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5 auto-rows-[280px] md:auto-rows-[240px]">
+                    <!-- Item 1: Video (Moved to the left, spanning 2 rows) -->
+                    <div
+                        class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-shadow duration-500 reveal">
+                        <video src="assets/images/gallery/gallery-showcase.mp4"
+                            poster="assets/images/gallery/gallery-4.jpg" autoplay loop muted playsinline
+                            class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"></video>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div
+                                class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 group-hover:bg-secondary-fixed group-hover:border-secondary-fixed group-hover:scale-110 transition-all duration-500 shadow-lg">
+                                <span class="material-symbols-outlined text-white text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute inset-0 p-6 md:p-8 flex flex-col justify-end pointer-events-none translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-white font-headline-md text-2xl md:text-3xl tracking-tight">Project Tour</h3>
+                            <span
+                                class="text-secondary-fixed font-label-caps text-[10px] tracking-[0.2em] uppercase mt-2">Exclusive Video</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Featured Image (Moved to the right, spanning 1 row) -->
+                    <div class="md:col-span-2 md:row-span-1 relative group overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-shadow duration-500 reveal"
+                        style="transition-delay: 100ms;">
+                        <img src="assets/images/gallery/gallery-1.jpg" alt="Featured Project"
+                            class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute inset-0 p-5 md:p-6 flex flex-col justify-end translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span
+                                class="text-secondary-fixed font-label-caps text-[9px] tracking-[0.25em] uppercase mb-1">Featured Project</span>
+                            <h3 class="text-white font-headline-md text-xl md:text-2xl tracking-tight">Complete Remodel</h3>
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/20 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-secondary-fixed text-[12px]">verified</span>
+                            <span class="text-white font-label-caps text-[8px] tracking-widest uppercase">Real</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-shadow duration-500 reveal"
+                        style="transition-delay: 200ms;">
+                        <img src="assets/images/gallery/gallery-2.jpg" alt="Finishes"
+                            class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute inset-0 p-5 md:p-6 flex flex-col justify-end translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-white font-headline-md text-xl tracking-tight">Finishes</h3>
+                            <span
+                                class="text-secondary-fixed font-label-caps text-[9px] tracking-[0.2em] uppercase mt-1">Gold Standard</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-shadow duration-500 reveal"
+                        style="transition-delay: 300ms;">
+                        <img src="assets/images/services/bathroom.jpg" alt="Bathroom"
+                            class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute inset-0 p-5 md:p-6 flex flex-col justify-end translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-white font-headline-md text-xl tracking-tight">Bathrooms</h3>
+                            <span
+                                class="text-secondary-fixed font-label-caps text-[9px] tracking-[0.2em] uppercase mt-1">Accessibility</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-14 text-center reveal" style="transition-delay: 200ms;">
+                    <div
+                        class="inline-flex items-center gap-3 px-6 py-3 bg-surface-container rounded-sm border border-outline-variant/20">
+                        <span class="material-symbols-outlined text-secondary text-lg">verified</span>
+                        <span class="font-label-caps text-[10px] tracking-[0.2em] text-on-surface-variant uppercase">
+                            All images are from actual Amici Remodeling projects
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="py-section-gap bg-surface px-margin-mobile md:px-margin-desktop">
+            <div class="max-w-container-max mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <span
+                        class="font-label-caps text-xs tracking-[0.2em] text-secondary mb-4 block uppercase font-semibold">Testimonials</span>
+                    <h2 class="font-headline-lg text-4xl md:text-5xl">What Our Clients Say</h2>
+                    <p class="font-body-md text-on-surface-variant mt-4 max-w-2xl mx-auto">
+                        Our greatest pride is the satisfaction of those who trust Amici Remodeling to transform their homes.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div
+                        class="bg-surface-container-low border border-outline-variant/30 p-8 rounded-sm h-full flex flex-col shadow-sm hover:shadow-md transition-shadow reveal">
+                        <div class="flex gap-1 mb-6 text-secondary">
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="font-body-lg text-on-surface mb-8 flex-grow leading-relaxed italic">
+                            "The Amici Remodeling team was incredible from start to finish. They transformed our outdated kitchen into a modern and functional space. What impressed us most was the attention to detail and clear communication."
+                        </p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <div
+                                class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-headline-md text-xl font-bold">
+                                S</div>
+                            <div>
+                                <h4 class="font-headline-sm text-on-surface font-semibold">Sarah M.</h4>
+                                <p
+                                    class="font-label-caps text-[10px] tracking-widest text-on-surface-variant uppercase">
+                                    Shrewsbury, MA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-surface-container-low border border-outline-variant/30 p-8 rounded-sm h-full flex flex-col shadow-sm hover:shadow-md transition-shadow reveal"
+                        style="transition-delay: 150ms;">
+                        <div class="flex gap-1 mb-6 text-secondary">
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="font-body-lg text-on-surface mb-8 flex-grow leading-relaxed italic">
+                            "We hired Amici to remodel our bathroom. The result was beautiful, safe, and the team always kept the space clean at the end of each day. I highly recommend their work."
+                        </p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <div
+                                class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-headline-md text-xl font-bold">
+                                J</div>
+                            <div>
+                                <h4 class="font-headline-sm text-on-surface font-semibold">John D.</h4>
+                                <p
+                                    class="font-label-caps text-[10px] tracking-widest text-on-surface-variant uppercase">
+                                    Worcester, MA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-surface-container-low border border-outline-variant/30 p-8 rounded-sm h-full flex flex-col shadow-sm hover:shadow-md transition-shadow reveal"
+                        style="transition-delay: 300ms;">
+                        <div class="flex gap-1 mb-6 text-secondary">
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="font-body-lg text-on-surface mb-8 flex-grow leading-relaxed italic">
+                            "Professional, punctual, and they deliver exactly what they promise. Our house remodel was completely stress-free and the finishing is flawless. It is rare to find contractors you can trust so much."
+                        </p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <div
+                                class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-headline-md text-xl font-bold">
+                                E</div>
+                            <div>
+                                <h4 class="font-headline-sm text-on-surface font-semibold">Emily R.</h4>
+                                <p
+                                    class="font-label-caps text-[10px] tracking-widest text-on-surface-variant uppercase">
+                                    Shrewsbury, MA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section id="process" class="py-section-gap bg-surface-container-lowest overflow-hidden">
+            <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="text-center mb-24 reveal">
+                    <span
+                        class="font-label-caps text-xs tracking-[0.2em] text-secondary mb-4 block uppercase font-semibold">Methodology</span>
+                    <h2 class="font-headline-lg text-4xl md:text-5xl">Path to Perfection</h2>
+                </div>
+
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Vertical Line -->
+                    <div class="timeline-line-bg hidden md:block"></div>
+                    <div class="timeline-line-progress hidden md:block" id="timeline-progress"></div>
+
+                    <div class="space-y-16 md:space-y-24 relative">
+                        <!-- Step 1 -->
+                        <div class="flex flex-col md:flex-row items-center gap-8 process-step group">
+                            <div class="md:w-1/2 text-right hidden md:block pr-8 reveal-left">
+                                <h3
+                                    class="font-headline-md text-3xl mb-4 text-primary transition-transform duration-500 group-hover:-translate-x-2">
+                                    01. Consultation</h3>
+                                <p
+                                    class="font-body-md text-on-surface-variant ml-auto max-w-sm transition-transform duration-500 group-hover:-translate-x-2">
+                                    Initial meeting to understand your vision, needs, and unique aesthetic goals.</p>
+                            </div>
+                            <div
+                                class="w-16 h-16 rounded-full bg-primary text-secondary-fixed flex items-center justify-center z-10 shrink-0 shadow-xl border-[6px] border-surface process-icon-wrapper reveal-scale">
+                                <span class="material-symbols-outlined text-2xl">forum</span>
+                            </div>
+                            <div class="md:w-1/2 md:hidden text-center reveal-right">
+                                <h3 class="font-headline-md text-2xl mb-2 text-primary">01. Consultation</h3>
+                                <p class="font-body-md text-on-surface-variant">Initial meeting to understand your vision, needs, and goals.</p>
+                            </div>
+                            <div class="md:w-1/2 hidden md:block pl-8"></div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex flex-col md:flex-row items-center gap-8 process-step group">
+                            <div class="md:w-1/2 hidden md:block pr-8"></div>
+                            <div
+                                class="w-16 h-16 rounded-full bg-primary text-secondary-fixed flex items-center justify-center z-10 shrink-0 shadow-xl border-[6px] border-surface process-icon-wrapper reveal-scale">
+                                <span class="material-symbols-outlined text-2xl">architecture</span>
+                            </div>
+                            <div class="md:w-1/2 text-left pl-8 hidden md:block reveal-right">
+                                <h3
+                                    class="font-headline-md text-3xl mb-4 text-primary transition-transform duration-500 group-hover:translate-x-2">
+                                    02. Design</h3>
+                                <p
+                                    class="font-body-md text-on-surface-variant max-w-sm transition-transform duration-500 group-hover:translate-x-2">
+                                    Development of detailed blueprints, selection of premium materials, and project 3D visualizations.</p>
+                            </div>
+                            <div class="md:w-1/2 md:hidden text-center reveal-right">
+                                <h3 class="font-headline-md text-2xl mb-2 text-primary">02. Design</h3>
+                                <p class="font-body-md text-on-surface-variant">Development of blueprints, premium materials, and visualizations.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex flex-col md:flex-row items-center gap-8 process-step group">
+                            <div class="md:w-1/2 text-right hidden md:block pr-8 reveal-left">
+                                <h3
+                                    class="font-headline-md text-3xl mb-4 text-primary transition-transform duration-500 group-hover:-translate-x-2">
+                                    03. Execution</h3>
+                                <p
+                                    class="font-body-md text-on-surface-variant ml-auto max-w-sm transition-transform duration-500 group-hover:-translate-x-2">
+                                    Master craftsmen bring the project to life with strict technical supervision at every detail.</p>
+                            </div>
+                            <div
+                                class="w-16 h-16 rounded-full bg-primary text-secondary-fixed flex items-center justify-center z-10 shrink-0 shadow-xl border-[6px] border-surface process-icon-wrapper reveal-scale">
+                                <span class="material-symbols-outlined text-2xl">construction</span>
+                            </div>
+                            <div class="md:w-1/2 md:hidden text-center reveal-right">
+                                <h3 class="font-headline-md text-2xl mb-2 text-primary">03. Execution</h3>
+                                <p class="font-body-md text-on-surface-variant">Craftsmen bring the project to life with strict technical supervision.</p>
+                            </div>
+                            <div class="md:w-1/2 hidden md:block pl-8"></div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex flex-col md:flex-row items-center gap-8 process-step group">
+                            <div class="md:w-1/2 hidden md:block pr-8"></div>
+                            <div
+                                class="w-16 h-16 rounded-full bg-primary text-secondary-fixed flex items-center justify-center z-10 shrink-0 shadow-xl border-[6px] border-surface process-icon-wrapper reveal-scale">
+                                <span class="material-symbols-outlined text-2xl">key</span>
+                            </div>
+                            <div class="md:w-1/2 text-left pl-8 hidden md:block reveal-right">
+                                <h3
+                                    class="font-headline-md text-3xl mb-4 text-primary transition-transform duration-500 group-hover:translate-x-2">
+                                    04. Handover</h3>
+                                <p
+                                    class="font-body-md text-on-surface-variant max-w-sm transition-transform duration-500 group-hover:translate-x-2">
+                                    Rigorous final inspection and handover of the keys to your completed residential masterpiece.</p>
+                            </div>
+                            <div class="md:w-1/2 md:hidden text-center reveal-right">
+                                <h3 class="font-headline-md text-2xl mb-2 text-primary">04. Handover</h3>
+                                <p class="font-body-md text-on-surface-variant">Rigorous final inspection and delivery of keys.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-24 text-center reveal">
+                <a href="#quote-section"
+                    class="inline-flex items-center justify-center gap-2 bg-primary text-secondary-fixed px-8 py-4 font-label-caps text-[11px] tracking-[0.2em] uppercase font-bold hover:bg-secondary-fixed hover:text-primary transition-all duration-300 rounded-sm shadow-xl group">
+                    Start My Project Now
+                    <span
+                        class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+                </a>
+            </div>
+            </div>
+        </section>
+
+        <!-- Get a Quote Section -->
+        <section id="quote-section" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-primary-container text-white relative overflow-hidden border-t border-white/5">
+            <!-- Ambient glowing backgrounds and grain -->
+            <div class="absolute inset-0 premium-grain opacity-20 pointer-events-none"></div>
+            <div class="absolute -top-[20%] -right-[10%] w-[50vw] h-[50vw] bg-secondary/15 rounded-full blur-[120px] pointer-events-none z-0"></div>
+            <div class="absolute -bottom-[20%] -left-[10%] w-[50vw] h-[50vw] bg-primary/40 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <span class="font-label-caps text-xs tracking-[0.3em] text-secondary-fixed mb-4 block font-semibold uppercase">Get a Quote</span>
+                    <h2 class="font-display-lg text-4xl md:text-5xl mb-4 text-white">Amici Remodeling LLC</h2>
+                    <p class="font-body-md text-on-primary-container max-w-lg mx-auto text-sm md:text-base">
+                        Ready to elevate your home? Fill out the details below, and our team will get back to you with a custom quote.
+                    </p>
+                </div>
+
+                <div class="bg-primary/40 backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-sm shadow-2xl reveal" style="transition-delay: 200ms;">
+                    <form id="quote-form" class="space-y-8" action="https://formsubmit.co/Amiciremodelingllc@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Quote Request - Amici Remodeling">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Full Name -->
+                            <div class="relative group">
+                                <input type="text" id="fullname" name="name" required
+                                    class="w-full bg-transparent border-b-2 border-white/20 py-3 px-1 text-white placeholder-transparent focus:outline-none focus:border-secondary-fixed transition-colors duration-300 peer text-sm md:text-base">
+                                <label for="fullname" 
+                                    class="absolute left-1 top-3 text-white/50 text-sm md:text-base pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-white/50 peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-focus:top-[-12px] peer-focus:text-xs peer-focus:text-secondary-fixed peer-[:not(:placeholder-shown)]:top-[-12px] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-secondary-fixed font-label-caps uppercase tracking-wider">
+                                    Full Name <span class="text-secondary-fixed">*</span>
+                                </label>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="relative group">
+                                <input type="tel" id="phone" name="phone" required
+                                    class="w-full bg-transparent border-b-2 border-white/20 py-3 px-1 text-white placeholder-transparent focus:outline-none focus:border-secondary-fixed transition-colors duration-300 peer text-sm md:text-base">
+                                <label for="phone" 
+                                    class="absolute left-1 top-3 text-white/50 text-sm md:text-base pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-white/50 peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-focus:top-[-12px] peer-focus:text-xs peer-focus:text-secondary-fixed peer-[:not(:placeholder-shown)]:top-[-12px] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-secondary-fixed font-label-caps uppercase tracking-wider">
+                                    Phone Number <span class="text-secondary-fixed">*</span>
+                                </label>
+                            </div>
+
+                            <!-- Email Address -->
+                            <div class="relative group">
+                                <input type="email" id="email" name="email" required
+                                    class="w-full bg-transparent border-b-2 border-white/20 py-3 px-1 text-white placeholder-transparent focus:outline-none focus:border-secondary-fixed transition-colors duration-300 peer text-sm md:text-base">
+                                <label for="email" 
+                                    class="absolute left-1 top-3 text-white/50 text-sm md:text-base pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-white/50 peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-focus:top-[-12px] peer-focus:text-xs peer-focus:text-secondary-fixed peer-[:not(:placeholder-shown)]:top-[-12px] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-secondary-fixed font-label-caps uppercase tracking-wider">
+                                    Email Address <span class="text-secondary-fixed">*</span>
+                                </label>
+                            </div>
+
+                            <!-- Service Needed Dropdown -->
+                            <div class="relative group select-container">
+                                <select id="service" name="service" required
+                                    class="w-full bg-transparent border-b-2 border-white/20 py-3 px-1 text-white focus:outline-none focus:border-secondary-fixed transition-colors duration-300 peer text-sm md:text-base appearance-none cursor-pointer">
+                                    <option value="" disabled selected class="bg-[#0c1b2a] text-white/50">Select a Service...</option>
+                                    <option value="Kitchen Remodeling" class="bg-[#0c1b2a] text-white">Kitchen Remodeling</option>
+                                    <option value="Bathroom Remodeling" class="bg-[#0c1b2a] text-white">Bathroom Remodeling</option>
+                                    <option value="Accessibility Renovation" class="bg-[#0c1b2a] text-white">Accessibility Renovation</option>
+                                    <option value="General Construction" class="bg-[#0c1b2a] text-white">General Construction</option>
+                                    <option value="Other" class="bg-[#0c1b2a] text-white">Other</option>
+                                </select>
+                                <label for="service" 
+                                    class="absolute left-1 top-[-12px] text-xs text-secondary-fixed pointer-events-none font-label-caps uppercase tracking-wider">
+                                    Service Needed <span class="text-secondary-fixed">*</span>
+                                </label>
+                                <span class="absolute right-2 top-4 pointer-events-none text-white/50 group-hover:text-secondary-fixed transition-colors material-symbols-outlined text-sm">keyboard_arrow_down</span>
+                            </div>
+                        </div>
+
+                        <!-- Tell Us About Your Project -->
+                        <div class="relative group mt-8">
+                            <textarea id="project-desc-form" name="message" rows="4" placeholder="Describe your project, timeline, or any specific detailsâ¦"
+                                class="w-full bg-transparent border-2 border-white/10 rounded-sm py-4 px-4 text-white placeholder-white/30 focus:outline-none focus:border-secondary-fixed transition-all duration-300 text-sm md:text-base resize-none focus:ring-1 focus:ring-secondary-fixed/50"></textarea>
+                            <label for="project-desc-form" 
+                                class="absolute left-4 top-[-10px] bg-[#0c1b2a]/90 px-2 text-xs text-secondary-fixed pointer-events-none font-label-caps uppercase tracking-wider transition-colors">
+                                Tell Us About Your Project
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="flex justify-center pt-4">
+                            <div class="magnetic-btn w-full sm:w-auto">
+                                <button type="submit" id="submit-quote-btn"
+                                    class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-secondary-fixed text-primary px-10 py-4 font-label-caps text-xs tracking-[0.2em] uppercase font-bold hover:bg-white transition-all duration-300 rounded-sm shadow-xl active:scale-98">
+                                    Send Quote Request
+                                    <span class="material-symbols-outlined text-lg">send</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Success State (Hidden initially) -->
+                    <div id="quote-success" class="hidden flex-col items-center justify-center py-8 text-center space-y-4">
+                        <div class="success-checkmark-wrapper">
+                            <span class="material-symbols-outlined text-secondary-fixed text-6xl success-icon-animate">check_circle</span>
+                        </div>
+                        <h3 class="font-headline-md text-2xl md:text-3xl text-white">Thank You!</h3>
+                        <p class="font-body-md text-on-primary-container max-w-md mx-auto text-sm md:text-base">
+                            Your quote request has been sent successfully. We will review your details and contact you soon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a1622] text-white pt-20 pb-0 border-t border-white/10 relative overflow-hidden">
+        <!-- Subtle background elements -->
+        <div class="absolute inset-0 premium-grain opacity-[0.15] pointer-events-none"></div>
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--color-primary-container)_0%,_transparent_60%)] opacity-40 pointer-events-none">
+        </div>
+
+        <div
+            class="w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 mb-16 relative z-10">
+            <!-- Brand Column -->
+            <div class="md:col-span-12 lg:col-span-4">
+                <a href="#"
+                    class="font-display-lg text-3xl tracking-tighter text-white flex items-center gap-3 mb-6 group">
+                    <img src="assets/images/logo.png" alt="Amici Logo"
+                        class="h-12 w-auto object-contain bg-white rounded-sm p-1 transition-transform group-hover:scale-105"
+                        style="max-height: 48px;" onerror="this.style.display='none'" />
+                </a>
+                <p class="font-body-md text-on-primary-container/80 mb-8 leading-relaxed max-w-sm">
+                    Elevating the standard of luxury living through impeccable design, masterly execution, and attention to the smallest details in Massachusetts.
+                </p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all duration-300 group"
+                        href="#" aria-label="Instagram">
+                        <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                    </a>
+                    <a class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all duration-300 group"
+                        href="#" aria-label="Facebook">
+                        <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+                        </svg>
+                    </a>
+                    <a class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all duration-300 group"
+                        href="mailto:Amiciremodelingllc@gmail.com" aria-label="Email">
+                        <span
+                            class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">mail</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="md:col-span-4 lg:col-span-2 lg:col-start-6">
+                <h4
+                    class="font-label-caps text-xs text-white mb-6 uppercase tracking-[0.25em] font-semibold flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed inline-block"></span> Navigation
+                </h4>
+                <ul class="space-y-3.5">
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#home">Home</a></li>
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#transformations">Portfolio</a></li>
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#services">Services</a></li>
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#process">Our Process</a></li>
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#about">About Amici</a></li>
+                </ul>
+            </div>
+
+            <!-- Services Links -->
+            <div class="md:col-span-4 lg:col-span-2">
+                <h4
+                    class="font-label-caps text-xs text-white mb-6 uppercase tracking-[0.25em] font-semibold flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed inline-block"></span> Services
+                </h4>
+                <ul class="space-y-3.5">
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#services">Kitchen Remodeling</a></li>
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#services">Bathroom Remodeling</a></li>
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#services">Accessibility</a></li>
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#services">General Construction</a></li>
+                    <li><a class="font-body-md text-sm text-on-primary-container/80 hover:text-secondary-fixed hover:translate-x-1 transition-all duration-300 inline-block"
+                            href="#services">Finishes</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="md:col-span-4 lg:col-span-3" id="contact">
+                <h4
+                    class="font-label-caps text-xs text-white mb-6 uppercase tracking-[0.25em] font-semibold flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed inline-block"></span> Contact
+                </h4>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-secondary-fixed border border-white/5">
+                            <span class="material-symbols-outlined text-[16px]">location_on</span>
+                        </div>
+                        <div class="pt-1">
+                            <p class="font-body-md text-white/90 text-sm font-medium mb-0.5">Location</p>
+                            <p class="font-body-md text-on-primary-container/70 text-xs leading-relaxed">Shrewsbury,
+                                Massachusetts<br>Serving the metropolitan area</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-secondary-fixed border border-white/5">
+                            <span class="material-symbols-outlined text-[16px]">phone</span>
+                        </div>
+                        <div class="pt-1">
+                            <p class="font-body-md text-white/90 text-sm font-medium mb-0.5">Phone</p>
+                            <a href="tel:+16177846514"
+                                class="font-body-md text-on-primary-container/70 text-xs hover:text-secondary-fixed transition-colors">(617)
+                                784-6514</a>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-secondary-fixed border border-white/5">
+                            <span class="material-symbols-outlined text-[16px]">mail</span>
+                        </div>
+                        <div class="pt-1">
+                            <p class="font-body-md text-white/90 text-sm font-medium mb-0.5">Email</p>
+                            <a href="mailto:Amiciremodelingllc@gmail.com"
+                                class="font-body-md text-on-primary-container/70 text-xs hover:text-secondary-fixed transition-colors break-all">Amiciremodelingllc@gmail.com</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="relative z-10 border-t border-white/10 bg-[#08121c]">
+            <div
+                class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-body-md text-xs text-on-primary-container/60">
+                    &copy; 2024 Amici Remodeling LLC. All rights reserved.
+                </p>
+                <div class="flex items-center gap-6">
+                    <a href="#"
+                        class="font-body-md text-xs text-on-primary-container/60 hover:text-secondary-fixed transition-colors">Privacy</a>
+                    <a href="#"
+                        class="font-body-md text-xs text-on-primary-container/60 hover:text-secondary-fixed transition-colors">Terms</a>
+                    <div class="flex items-center gap-2 ml-2 pl-6 border-l border-white/10">
+                        <div
+                            class="w-1.5 h-1.5 rounded-full bg-secondary-fixed shadow-[0_0_8px_var(--color-secondary-fixed)] animate-pulse">
+                        </div>
+                        <span class="font-label-caps text-[9px] tracking-[0.2em] uppercase text-white/70">Premium Quality</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Language Switcher -->
+    <div class="fixed bottom-6 left-6 z-50 transition-all duration-300 hover:scale-105" id="lang-switcher-container">
+        <button id="lang-toggle-btn" class="flex items-center gap-2 px-3 py-2 bg-[#0a1622]/90 backdrop-blur-md border border-white/10 text-white rounded-full shadow-2xl hover:border-secondary-fixed transition-all duration-300 font-label-caps text-[10px] sm:text-[11px] tracking-wider uppercase">
+            <span class="material-symbols-outlined text-[14px] sm:text-[16px] text-secondary-fixed">language</span>
+            <span id="lang-current-label">EN</span>
+            <span class="text-white/20">|</span>
+            <span id="lang-next-label" class="text-white/55">PT</span>
+        </button>
+    </div>
+
+    <!-- App Logic -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

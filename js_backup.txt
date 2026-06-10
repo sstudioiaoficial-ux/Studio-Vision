@@ -1,0 +1,236 @@
+    <!-- Studio Vision - Unified Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // ============================
+            // Menu Overlay Open/Close
+            // ============================
+            const menuBtn = document.getElementById('menu-toggle-btn');
+            const overlay = document.getElementById('menu-overlay');
+            const closeBtn = document.querySelector('.close-menu-btn');
+            const menuLinks = document.querySelectorAll('.menu-link');
+            
+            function openMenu() {
+                if (!overlay) return;
+                overlay.style.visibility = 'visible';
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+                
+                // Animate links in
+                menuLinks.forEach(link => {
+                    link.classList.remove('translate-y-full', 'opacity-0');
+                    link.classList.add('translate-y-0', 'opacity-100');
+                });
+            }
+            
+            function closeMenu() {
+                if (!overlay) return;
+                // Animate links out first
+                menuLinks.forEach(link => {
+                    link.classList.add('translate-y-full', 'opacity-0');
+                    link.classList.remove('translate-y-0', 'opacity-100');
+                });
+                
+                setTimeout(() => {
+                    overlay.classList.add('opacity-0', 'pointer-events-none');
+                    overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                    document.body.style.overflow = '';
+                    setTimeout(() => { overlay.style.visibility = 'hidden'; }, 700);
+                }, 300);
+            }
+            
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            
+            // Close menu when clicking a link
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    setTimeout(closeMenu, 100);
+                });
+            });
+
+            // ============================
+            // Smooth Scroll for ALL anchor links
+            // ============================
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#' || targetId === '') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
+                    }
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // ============================
+            // Scroll Spy (Active Menu Item)
+            // ============================
+            const sections = document.querySelectorAll('section[id], footer[id]');
+            const spyLinks = document.querySelectorAll('.menu-link');
+            
+            const spyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        spyLinks.forEach(link => {
+                            const href = link.getAttribute('href');
+                            if (href === `#${id}`) {
+                                link.classList.add('text-accent-mint');
+                            } else {
+                                link.classList.remove('text-accent-mint');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '-10% 0px -60% 0px' });
+            
+            sections.forEach(sec => spyObserver.observe(sec));
+
+            // ============================
+            // Scroll Reveal (Intersection Observer)
+            // ============================
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-up, .reveal-in, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+            // ============================
+            // Animated Number Counters
+            // ============================
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = +el.getAttribute('data-target');
+                        const duration = 2000;
+                        const steps = 60;
+                        const stepTime = Math.floor(duration / steps);
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += (target / steps);
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            el.textContent = Math.floor(current);
+                        }, stepTime);
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+            // ============================
+            // Amici Video Logic
+            // ============================
+            // Lógica do Vídeo Amici removida temporariamente para auditoria.
+
+            // ============================
+            // Lumière Gallery Image Swap
+            // ============================
+            const lumiereGallery = document.querySelector('.lumiere-gallery');
+            if (lumiereGallery) {
+                const imgs = lumiereGallery.querySelectorAll('img');
+                if (imgs.length >= 2) {
+                    let currentIdx = 0;
+                    setInterval(() => {
+                        imgs[currentIdx].style.opacity = '0';
+                        imgs[currentIdx].style.transform = 'scale(1.08)';
+                        currentIdx = (currentIdx + 1) % imgs.length;
+                        imgs[currentIdx].style.opacity = '1';
+                        imgs[currentIdx].style.transform = 'scale(1.02)';
+                    }, 4000);
+                }
+            }
+
+            // ============================
+            // Code Streams Animation (background effect)
+            // ============================
+            const codeContainer = document.getElementById('code-streams-container');
+            if (codeContainer) {
+                const codeSnippets = ['const design = await create();', 'npm run deploy', 'git push origin main', '<Component />', 'export default App', 'useState()', 'useEffect()', 'async/await', 'transform: scale(1.05)', 'opacity: 0 → 1'];
+                for (let i = 0; i < 6; i++) {
+                    const stream = document.createElement('div');
+                    stream.classList.add('code-stream');
+                    stream.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+                    stream.style.left = Math.random() * 90 + '%';
+                    stream.style.top = Math.random() * 100 + '%';
+                    stream.style.animationDelay = Math.random() * 8 + 's';
+                    codeContainer.appendChild(stream);
+                }
+            }
+
+            // ============================
+            // Digital Canvas (Particle Background)
+            // ============================
+            const canvas = document.getElementById('digital-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+                
+                for (let i = 0; i < 40; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3,
+                        size: Math.random() * 1.5 + 0.5,
+                        opacity: Math.random() * 0.3 + 0.05
+                    });
+                }
+                
+                function animateParticles() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    particles.forEach(p => {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(0, 219, 234, ${p.opacity})`;
+                        ctx.fill();
+                    });
+                    
+                    // Draw connections
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < 150) {
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.strokeStyle = `rgba(0, 219, 234, ${0.03 * (1 - dist / 150)})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                    requestAnimationFrame(animateParticles);
+                }
+                animateParticles();
+            }
+        });
+    </script>
