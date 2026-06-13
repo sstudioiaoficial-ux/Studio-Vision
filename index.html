@@ -25,7 +25,7 @@
                 extend: {
                     "colors": {
                         "accent-mint": "#00dbea",
-                        "deep-black": "#030303",
+                        "deep-black": "#050505",
                         "surface": "#0a0a0a",
                         "surface-elevated": "#111111",
                         "on-surface": "#fafafa",
@@ -51,7 +51,7 @@
     </script>
     <style>
         body {
-            background-color: #030303;
+            background-color: #050505;
             color: #fafafa;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -67,6 +67,7 @@
             position: relative;
             z-index: 20;
             word-break: break-word;
+            text-shadow: 0 0 50px rgba(0, 219, 234, 0.2);
         }
 
         /* Digital Space Background Layers */
@@ -74,7 +75,7 @@
             position: fixed;
             inset: 0;
             z-index: 0;
-            background: #030303;
+            background: #050505;
             overflow: hidden;
             pointer-events: none;
         }
@@ -841,80 +842,152 @@
             }
 
             // ============================
-            // Digital Canvas (Particle Background)
+            // Holographic 3D Globe & Particles Canvas
             // ============================
-            (function initParticleCanvas() {
+            (function initHoloGlobe() {
                 const canvas = document.getElementById('digital-canvas');
                 if (!canvas) { console.error('[Particles] Canvas #digital-canvas not found'); return; }
-                const ctx = canvas.getContext('2d');
+                const ctx = canvas.getContext('2d', { alpha: true });
                 if (!ctx) { console.error('[Particles] Could not get 2D context'); return; }
-
-                let particles = [];
-                let w = 0, h = 0;
-                let mouse = { x: -9999, y: -9999, active: false };
-                const mouseRadius = 200;
-                const mouseAttraction = 0.02;
-
-                // Track mouse position
-                window.addEventListener('mousemove', function (e) {
-                    mouse.x = e.clientX;
-                    mouse.y = e.clientY;
+                
+                let w = 0, h = 0, isMobile = false;
+                let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2, tx: window.innerWidth / 2, ty: window.innerHeight / 2, active: false };
+                
+                window.addEventListener('mousemove', (e) => {
+                    mouse.tx = e.clientX;
+                    mouse.ty = e.clientY;
                     mouse.active = true;
                 });
-                window.addEventListener('mouseleave', function () {
+                window.addEventListener('mouseleave', () => {
                     mouse.active = false;
-                    mouse.x = -9999;
-                    mouse.y = -9999;
+                    mouse.tx = w / 2;
+                    mouse.ty = h / 2;
                 });
-
+                
+                // 3D Engine basics
+                let nodes = [];
+                let edges = [];
+                let bgParticles = [];
+                let angleX = 0;
+                let angleY = 0;
+                let radius = 250; 
+                
                 function resize() {
                     w = window.innerWidth;
                     h = window.innerHeight;
                     canvas.width = w;
                     canvas.height = h;
-                    if (particles.length === 0) createParticles();
+                    isMobile = w < 768;
+                    radius = isMobile ? 140 : 250;
+                    initGlobe();
+                    if (bgParticles.length === 0) initParticles();
                 }
 
-                function createParticles() {
-                    particles = [];
-                    const count = w < 768 ? 60 : 120;
+                // Generate points on a sphere (Fibonacci sphere)
+                function initGlobe() {
+                    nodes = [];
+                    edges = [];
+                    const samples = isMobile ? 60 : 120;
+                    const offset = 2 / samples;
+                    const increment = Math.PI * (3 - Math.sqrt(5));
+                    
+                    for (let i = 0; i < samples; i++) {
+                        let y = ((i * offset) - 1) + (offset / 2);
+                        let r = Math.sqrt(1 - Math.pow(y, 2));
+                        let phi = ((i + 1) % samples) * increment;
+                        let x = Math.cos(phi) * r;
+                        let z = Math.sin(phi) * r;
+                        nodes.push({ x: x * radius, y: y * radius, z: z * radius });
+                    }
+                    
+                    // Create edges based on distance
+                    const connectionDist = isMobile ? 80 : 120;
+                    for (let i = 0; i < nodes.length; i++) {
+                        for (let j = i + 1; j < nodes.length; j++) {
+                            let dx = nodes[i].x - nodes[j].x;
+                            let dy = nodes[i].y - nodes[j].y;
+                            let dz = nodes[i].z - nodes[j].z;
+                            let dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                            if (dist < connectionDist) {
+                                edges.push({ a: i, b: j, dist: dist });
+                            }
+                        }
+                    }
+                }
+
+                function initParticles() {
+                    bgParticles = [];
+                    const count = isMobile ? 40 : 80;
                     for (let i = 0; i < count; i++) {
-                        particles.push({
+                        bgParticles.push({
                             x: Math.random() * w,
                             y: Math.random() * h,
                             vx: (Math.random() - 0.5) * 0.5,
                             vy: (Math.random() - 0.5) * 0.5,
-                            size: Math.random() * 2 + 0.5,
-                            opacity: Math.random() * 0.5 + 0.15
+                            size: Math.random() * 1.5 + 0.5,
+                            opacity: Math.random() * 0.5 + 0.1
                         });
                     }
                 }
-
+                
                 resize();
-                createParticles();
                 window.addEventListener('resize', resize);
+                
+                function project(x, y, z) {
+                    const focalLength = 800;
+                    const scale = focalLength / (focalLength + z);
+                    return {
+                        x: x * scale,
+                        y: y * scale,
+                        scale: scale
+                    };
+                }
 
-                console.log('[Particles] Initialized:', particles.length, 'particles on', w, 'x', h, 'canvas');
+                function rotateY(x, z, angle) {
+                    const cos = Math.cos(angle);
+                    const sin = Math.sin(angle);
+                    return { x: x * cos - z * sin, z: z * cos + x * sin };
+                }
+
+                function rotateX(y, z, angle) {
+                    const cos = Math.cos(angle);
+                    const sin = Math.sin(angle);
+                    return { y: y * cos - z * sin, z: z * cos + y * sin };
+                }
 
                 function animate() {
                     ctx.clearRect(0, 0, w, h);
+                    
+                    // Ease mouse for smooth parallax
+                    mouse.x += (mouse.tx - mouse.x) * 0.05;
+                    mouse.y += (mouse.ty - mouse.y) * 0.05;
+                    
+                    // Base rotation + subtle mouse influence
+                    angleY += 0.002;
+                    angleX = (mouse.y - h/2) * 0.0003;
+                    const targetAngleY = angleY + (mouse.x - w/2) * 0.0005;
 
-                    // Update and draw particles
-                    for (let i = 0; i < particles.length; i++) {
-                        const p = particles[i];
+                    // Center of the globe with parallax offset
+                    const cx = w / 2 + (mouse.x - w / 2) * 0.02;
+                    const cy = h / 2 + (mouse.y - h / 2) * 0.02;
 
-                        // Mouse attraction: gently pull particles toward cursor
+                    // 1. Update and draw background particles
+                    ctx.lineWidth = 0.5;
+                    for (let i = 0; i < bgParticles.length; i++) {
+                        const p = bgParticles[i];
+                        
+                        // Gentle mouse pull
                         if (mouse.active) {
-                            const dmx = mouse.x - p.x;
-                            const dmy = mouse.y - p.y;
+                            const dmx = mouse.tx - p.x;
+                            const dmy = mouse.ty - p.y;
                             const mouseDist = Math.sqrt(dmx * dmx + dmy * dmy);
-                            if (mouseDist < mouseRadius && mouseDist > 0) {
-                                p.vx += (dmx / mouseDist) * mouseAttraction;
-                                p.vy += (dmy / mouseDist) * mouseAttraction;
+                            if (mouseDist < 200 && mouseDist > 0) {
+                                p.vx += (dmx / mouseDist) * 0.01;
+                                p.vy += (dmy / mouseDist) * 0.01;
                             }
                         }
 
-                        // Dampen velocity to prevent runaway speeds
+                        // Dampen
                         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
                         if (speed > 1.5) {
                             p.vx *= 0.98;
@@ -927,58 +1000,93 @@
                         if (p.x > w) { p.x = w; p.vx *= -1; }
                         if (p.y < 0) { p.y = 0; p.vy *= -1; }
                         if (p.y > h) { p.y = h; p.vy *= -1; }
-
+                        
                         ctx.beginPath();
                         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                        ctx.fillStyle = 'rgba(0, 219, 234, ' + p.opacity + ')';
+                        ctx.fillStyle = `rgba(0, 219, 234, ${p.opacity})`;
                         ctx.fill();
-                    }
 
-                    // Draw connecting lines between particles
-                    const maxDist = 160;
-                    for (let i = 0; i < particles.length; i++) {
-                        for (let j = i + 1; j < particles.length; j++) {
-                            const dx = particles[i].x - particles[j].x;
-                            const dy = particles[i].y - particles[j].y;
-                            const distSq = dx * dx + dy * dy;
-                            if (distSq < maxDist * maxDist) {
-                                const dist = Math.sqrt(distSq);
-                                const alpha = 0.15 * (1 - dist / maxDist);
+                        // Connect close particles
+                        const distLimit = isMobile ? 80 : 120;
+                        for(let j = i+1; j < bgParticles.length; j++) {
+                            const p2 = bgParticles[j];
+                            const dx = p.x - p2.x;
+                            const dy = p.y - p2.y;
+                            const dist = Math.sqrt(dx*dx + dy*dy);
+                            if(dist < distLimit) {
                                 ctx.beginPath();
-                                ctx.moveTo(particles[i].x, particles[i].y);
-                                ctx.lineTo(particles[j].x, particles[j].y);
-                                ctx.strokeStyle = 'rgba(0, 219, 234, ' + alpha + ')';
-                                ctx.lineWidth = 0.8;
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.strokeStyle = `rgba(0, 219, 234, ${0.15 * (1 - dist/distLimit)})`;
                                 ctx.stroke();
                             }
                         }
                     }
 
-                    // Draw connections from mouse cursor to nearby particles
-                    if (mouse.active) {
-                        for (let i = 0; i < particles.length; i++) {
-                            const dx = mouse.x - particles[i].x;
-                            const dy = mouse.y - particles[i].y;
-                            const dist = Math.sqrt(dx * dx + dy * dy);
-                            if (dist < mouseRadius) {
-                                const alpha = 0.25 * (1 - dist / mouseRadius);
-                                ctx.beginPath();
-                                ctx.moveTo(mouse.x, mouse.y);
-                                ctx.lineTo(particles[i].x, particles[i].y);
-                                ctx.strokeStyle = 'rgba(0, 219, 234, ' + alpha + ')';
-                                ctx.lineWidth = 1;
-                                ctx.stroke();
-                            }
-                        }
-                        // Draw a subtle glow dot at cursor
+                    // 2. Draw 3D Globe
+                    let rotatedNodes = [];
+                    for (let i = 0; i < nodes.length; i++) {
+                        let ry = rotateY(nodes[i].x, nodes[i].z, targetAngleY);
+                        let rx = rotateX(nodes[i].y, ry.z, angleX);
+                        rotatedNodes.push({ x: ry.x, y: rx.y, z: rx.z });
+                    }
+
+                    // Sort edges by Z to draw back to front (painter's algorithm)
+                    let edgesToDraw = edges.map(edge => {
+                        return {
+                            edge: edge,
+                            zAvg: (rotatedNodes[edge.a].z + rotatedNodes[edge.b].z) / 2
+                        };
+                    });
+                    edgesToDraw.sort((e1, e2) => e2.zAvg - e1.zAvg);
+
+                    // Draw edges
+                    for (let i = 0; i < edgesToDraw.length; i++) {
+                        const edge = edgesToDraw[i].edge;
+                        const n1 = rotatedNodes[edge.a];
+                        const n2 = rotatedNodes[edge.b];
+                        
+                        const p1 = project(n1.x, n1.y, n1.z);
+                        const p2 = project(n2.x, n2.y, n2.z);
+                        
+                        const zAvg = edgesToDraw[i].zAvg;
+                        // Opacity based on Z-depth (back is faded, front is bright)
+                        let alpha = (zAvg + radius) / (radius * 2);
+                        alpha = Math.max(0.02, Math.min(0.5, alpha));
+                        
                         ctx.beginPath();
-                        ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2);
-                        ctx.fillStyle = 'rgba(0, 219, 234, 0.4)';
+                        ctx.moveTo(cx + p1.x, cy + p1.y);
+                        ctx.lineTo(cx + p2.x, cy + p2.y);
+                        ctx.strokeStyle = `rgba(0, 219, 234, ${alpha})`;
+                        ctx.lineWidth = alpha * 1.5;
+                        ctx.stroke();
+                    }
+
+                    // Draw nodes
+                    for (let i = 0; i < rotatedNodes.length; i++) {
+                        const n = rotatedNodes[i];
+                        const p = project(n.x, n.y, n.z);
+                        let alpha = (n.z + radius) / (radius * 2);
+                        alpha = Math.max(0.1, Math.min(0.9, alpha));
+                        
+                        ctx.beginPath();
+                        ctx.arc(cx + p.x, cy + p.y, (isMobile ? 1.5 : 2) * p.scale, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(0, 219, 234, ${alpha})`;
+                        
+                        // Add glow only to front nodes
+                        if (alpha > 0.6 && !isMobile) {
+                            ctx.shadowBlur = 8;
+                            ctx.shadowColor = 'rgba(0, 219, 234, 0.8)';
+                        } else {
+                            ctx.shadowBlur = 0;
+                        }
                         ctx.fill();
+                        ctx.shadowBlur = 0; // reset
                     }
 
                     requestAnimationFrame(animate);
                 }
+                
                 animate();
             })();
         });
